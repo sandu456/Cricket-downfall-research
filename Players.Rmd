@@ -1,0 +1,158 @@
+---
+title: "research project"
+author: "Sandupama Wagaarachchige"
+date: "2024-12-26"
+output: html_document
+---
+
+```{r}
+#import dataset
+df <- read.csv("C:/Users/Sandu/Downloads/Players.csv")
+head(df)
+
+#Filter for Sri Lankan players
+sri_lanka_data <- subset(df, Country == "SriLanka")
+
+
+# Calculate means for all numeric variables
+mean_values <- colMeans(sri_lanka_data[, sapply(sri_lanka_data, is.numeric)], na.rm = TRUE)
+
+# Print the result
+print(mean_values)
+
+#Filter for Indian players
+India_data <- subset(df, Country == "India")
+
+# Calculate means for all numeric variables
+mean_values <- colMeans(India_data[, sapply(India_data, is.numeric)], na.rm = TRUE)
+
+# Print the result
+print(mean_values)
+
+
+#Filter for Australia players
+Australia_data <- subset(df, Country == "Australia")
+
+# Calculate means for all numeric variables
+mean_values <- colMeans(Australia_data[, sapply(Australia_data, is.numeric)], na.rm = TRUE)
+
+# Print the result
+print(mean_values)
+
+
+
+#Filter for New Zealand players
+New_Zealand_data <- subset(df, Country == "New Zealand")
+
+# Calculate means for all numeric variables
+mean_values <- colMeans(New_Zealand_data[, sapply(New_Zealand_data, is.numeric)], na.rm = TRUE)
+
+# Print the result
+print(mean_values)
+
+
+
+#Filter for England players
+England_data <- subset(df, Country == "England")
+
+# Calculate means for all numeric variables
+mean_values <- colMeans(England_data[, sapply(England_data, is.numeric)], na.rm = TRUE)
+
+# Print the result
+print(mean_values)
+
+
+#Filter for Pakistan players
+Pakistan_data <- subset(df, Country == "Pakistan")
+
+# Calculate means for all numeric variables
+mean_values <- colMeans(Pakistan_data[, sapply(Pakistan_data, is.numeric)], na.rm = TRUE)
+
+# Print the result
+print(mean_values)
+
+
+#Filter for South Africa  players
+South_Africa_data <- subset(df, Country == "South Africa")
+
+# Calculate means for all numeric variables
+mean_values <- colMeans(South_Africa_data[, sapply(South_Africa_data, is.numeric)], na.rm = TRUE)
+
+# Print the result
+print(mean_values)
+
+
+#Comparing with other Countries
+#Calculate the mean Innings  for each country
+mean_Innings_by_country <- aggregate(Innings  ~ Country, data = df, FUN = mean)
+
+# Create the line graph
+ggplot(mean_Innings_by_country, aes(x = Country, y = Innings , group = 1)) +
+  geom_line(color = "blue", size = 1.2) +      
+  geom_point(color = "red", size = 3) +       
+  labs(title = "Mean Innings  by Country",
+       x = "Country",
+       y = "Mean Innings ") +
+  theme_minimal()  
+
+#Calculate the mean Runs  for each country
+mean_Runs_by_country <- aggregate(Runs  ~ Country, data = df, FUN = mean)
+
+# Create the line graph
+ggplot(mean_Runs_by_country, aes(x = Country, y = Runs , group = 1)) +
+  geom_line(color = "blue", size = 1.2) +      
+  geom_point(color = "red", size = 3) +       
+  labs(title = "Mean Runs  by Country",
+       x = "Country",
+       y = "Mean Runs ") +
+  theme_minimal() 
+
+
+#Calculate the mean Batting Average for each country
+mean_bat_avg_by_country <- aggregate(Bat.Avg ~ Country, data = df, FUN = mean)
+
+# Step 3: Plot the line graph using ggplot2
+# Load ggplot2 library
+library(ggplot2)
+
+# Create the line graph
+ggplot(mean_bat_avg_by_country, aes(x = Country, y = Bat.Avg, group = 1)) +
+  geom_line(color = "blue", size = 1.2) +      
+  geom_point(color = "red", size = 3) +       
+  labs(title = "Mean Batting Average by Country",
+       x = "Country",
+       y = "Mean Batting Average") +
+  theme_minimal() 
+
+
+#Calculate the mean Strike rate  for each country
+mean_Strike_rate_by_country <- aggregate(Strike.rate  ~ Country, data = df, FUN = mean)
+
+# Create the line graph
+ggplot(mean_Strike_rate_by_country, aes(x = Country, y = Strike.rate , group = 1)) +
+  geom_line(color = "blue", size = 1.2) +      
+  geom_point(color = "red", size = 3) +       
+  labs(title = "Mean Strike rate  by Country",
+       x = "Country",
+       y = "Mean Strike rate
+ ") +
+  theme_minimal() 
+
+
+#Calculate the mean Hundreds  for each country
+mean_Hundreds_by_country <- aggregate(Hundreds  ~ Country, data = df, FUN = mean)
+
+# Create the line graph
+ggplot(mean_Hundreds_by_country, aes(x = Country, y = Hundreds , group = 1)) +
+  geom_line(color = "blue", size = 1.2) +      
+  geom_point(color = "red", size = 3) +       
+  labs(title = "Mean Hundreds  by Country",
+       x = "Country",
+       y = "Mean Hundreds
+ ") +
+  theme_minimal() 
+
+
+
+```
+
