@@ -1,0 +1,34 @@
+---
+title: "Win Percentage"
+author: "Sandupama Wagaarachchige"
+date: "2025-01-14"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+```{r}
+df<-read.csv("C:/Users/Sandu/Downloads/Win_Percentage_ODI.csv")
+head(df)
+
+# Calculate Win Percentage
+df$Win_Percentage <- (df$Win / df$Matches) * 100
+
+print(df)
+
+# Plot the Win Percentage over the years, showing all years on the x-axis
+library(ggplot2)
+ggplot(df, aes(x = Year, y = Win_Percentage)) +
+  geom_line(color = "blue", size = 1) +
+  geom_point(color = "red", size = 2) +
+  scale_x_continuous(breaks = df$Year) +  
+  labs(
+    title = "Win Percentage of Sri Lanka Cricket Team by Year",
+    x = "Year",
+    y = "Win Percentage"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+
+```
+
